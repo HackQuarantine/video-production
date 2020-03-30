@@ -38,15 +38,14 @@ class TitleCard:
 
         for word in text.split(' '):
             curr = self._get_width(draw, word)
+            # check if word is longer than allowed
+            if (curr + space_width) > (self.width - (self.border*2)):
+                raise
             if (curr + space_width) > space_left:
-                if new_line == True:
-                    # can't place without splitting the word.
-                    raise
-                else:
-                    # add a new break and reset
-                    new_line = True
-                    space_left = self.width - (self.border*2)
-                    output += ('\n' + word)
+                # reset
+                space_left = self.width - (self.border*2)
+                output += ('\n' + word + ' ')
+                space_left -= (curr + space_width)
             else:
                 # we have space left.
                 space_left -= (curr + space_width)
