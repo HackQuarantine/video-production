@@ -1,1 +1,9 @@
-*/__pycache__/
+**/__pycache__
+output/
+sources/
+assets/
+staging/
+old/
+audio/
+edits/
+Project_files/
