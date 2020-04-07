@@ -7,7 +7,7 @@ class TitleCard:
             self,
             font_path='/usr/share/fonts/truetype/source-code-pro-ttf/SourceCodePro-Bold.ttf',
             font_size=172,
-            border=50,
+            border=10,
             width=1920,
             height=1080,
             title_color='#EBC805FF',

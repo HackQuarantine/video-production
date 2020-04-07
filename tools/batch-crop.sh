@@ -13,7 +13,7 @@ while read p; do
     t=`basename "$filename"`
     output=staging/${t%%.*}.mkv
 
-    echo /dev/null | ffmpeg -i "$filename" -vf "crop=w=in_w-$x_start:h=in_h-$y_start:x=$x_start:y=0,scale=1920x1080,setsar=1:1" -c:v libx264 -c:a aac -async 1 -ss "$start" -to "$end" "$output"
+    cat /dev/null | ffmpeg -hwaccel cuda -i "$filename" -vf "crop=w=in_w-$x_start:h=in_h-$y_start:x=$x_start:y=0,scale=1920x1080,setsar=1:1" -c:v h264_nvenc -c:a aac -async 1 -ss "$start" -to "$end" "$output"
 
 done <$1
 
